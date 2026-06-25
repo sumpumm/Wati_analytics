@@ -1,0 +1,1 @@
+This is a simple CRM project that provides whatsapp messages analytics using wati.
