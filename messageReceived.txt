@@ -1,0 +1,16 @@
+$ uvicorn api:app --reload
+INFO:     Will watch for changes in these directories: ['D:\\Work Saral Apps\\CRM\\api']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [12892] using WatchFiles
+INFO:     Started server process [22952]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+{'id': '6a3cceaa02162ec653a74f20', 'created': '2026-06-25T06:46:02.6749436Z', 'whatsappMessageId': 'wamid.HBgNOTc3OTgwOTQ4OTc2NBUCABIYIEFDQ0ZBQjY5RENDREYxREFFQzczRkE4QTVCQzEzNkFGAA==', 'conversationId': '69757a762c89b921e674d5ff', 'ticketId': '6a3ccdbeae03fbc07875b7b6', 'text': 'Veterinarian ko class hunx ki nai', 'type': 'text', 'data': None, 'sourceId': None, 'sourceUrl': None, 'timestamp': '1782369960', 'owner': False, 'eventType': 'message', 'statusString': 'SENT', 'avatarUrl': None, 'assignedId': '67cfc3b23b21b9d3e767595e', 'operatorName': 'indira  batala', 'operatorEmail': 'ibatala161@gmail.com', 'waId': '9779809489764', 'messageContact': None, 'senderName': 'pari☺️😘', 'listReply': None, 'interactiveButtonReply': None, 'buttonReply': None, 'replyContextId': '', 'sourceType': 7, 'frequentlyForwarded': False, 'forwarded': False, 'bsuid': 'NP.1016949897961236'}
+
+INFO:     34.142.227.195:0 - "POST /wati/webhook HTTP/1.1" 200 OK
+{'id': '6a3cceab56637e3fc50b4a4b', 'created': '2026-06-25T06:46:03.3523631Z', 'whatsappMessageId': 'wamid.HBgNOTc3OTc0OTI4Mjk2OBUCABIYIEFDNzU1QTc3QTg1NEI2MTk2MjgzNjgwNURFODNCNzJEAA==', 'conversationId': '69e74283fc14aa368178ee32', 'ticketId': '6a3ccdf00b37594b0ec78e2c', 'text': 'Huss', 'type': 'text', 'data': None, 'sourceId': None, 'sourceUrl': None, 'timestamp': '1782369962', 'owner': False, 'eventType': 'message', 'statusString': 'SENT', 'avatarUrl': None, 'assignedId': '68a586d0080534d12e74aa1a', 'operatorName': 'tulsee kadayat', 'operatorEmail': 'kadayattulsee9@gmail.com', 'waId': '9779749282968', 'messageContact': None, 'senderName': 'lalitamagar553', 'listReply': None, 'interactiveButtonReply': None, 'buttonReply': None, 'replyContextId': '', 'sourceType': 7, 'frequentlyForwarded': False, 'forwarded': False, 'bsuid': 'NP.974856445503915'}
+
+INFO:     136.110.56.252:0 - "POST /wati/webhook HTTP/1.1" 200 OK
+{'id': '6a3cceab6127f47968a852e5', 'created': '2026-06-25T06:46:03.5300318Z', 'whatsappMessageId': 'wamid.HBgNOTcn3OTgxMzg3OTg4NhUCABIYIEFDQjkzQzQ4RTczODM2RDI4RjZFNDJFRUU5MzM0MkE1AA==', 'conversationId': '6a3cbd745a5429ba2f49d2c5', 'ticketId': '6a3cbd75ab52f32aa2e22452', 'text': 'Hus', 'type': 'text', 'data': None, 'sourceId': None, 'sourceUrl': None, 'timestamp': '1782369962', 'owner': False, 'eventType': 'message', 'statusString': 'SENT', 'avatarUrl': None, 'assignedId': '67cfc3b23b21b9d3e767595e', 'operatorName': 'indira  batala', 'operatorEmail': 'ibatala161@gmail.com', 'waId': '9779813879886', 'messageContact': None, 'senderName': 'puspat388', 'listReply': None, 'interactiveButtonReply': None, 'buttonReply': None, 'replyContextId': '', 'sourceType': 7, 'frequentlyForwarded': False, 'forwarded': False, 'bsuid': 'NP.771464022723448'}
+
+INFO:     34.21.136.97:0 - "POST /wati/webhook HTTP/1.1" 200 OK
