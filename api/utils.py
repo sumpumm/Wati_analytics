@@ -36,6 +36,7 @@ def extract_operatorDetail(payload:dict):
         
 def extract_conversationDetails(payload:dict):
     conversationId = payload.get("conversationId")
+    created = payload.get("created")
     assignedId = payload.get("assignedId")
     sourceId = payload.get("sourceId")
     sourceUrl = payload.get("sourceUrl")    
@@ -47,9 +48,9 @@ def extract_conversationDetails(payload:dict):
         writer=csv.writer(f,delimiter='|')
         
         if not file_exists:
-            writer.writerow(['conversationId','assignedId','sourceId','sourceUrl'])
+            writer.writerow(['conversationId','created','assignedId','sourceId','sourceUrl'])
         
-        writer.writerows([[conversationId,assignedId,sourceId,sourceUrl]])
+        writer.writerows([[conversationId,created,assignedId,sourceId,sourceUrl]])
       
 
     
