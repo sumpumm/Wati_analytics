@@ -52,5 +52,17 @@ def extract_conversationDetails(payload:dict):
         
         writer.writerows([[conversationId,created,assignedId,sourceId,sourceUrl]])
       
-
+def extract_eventDetails(payload:dict):
+    eventType = payload.get("eventType")
+    created = payload.get("created")
     
+    file_path = BASE_DIR/'data/eventDetails.csv'
+    file_exists = os.path.exists(file_path)
+    
+    with open(file_path,'a',encoding="utf-8",newline="") as f:
+        writer=csv.writer(f,delimiter='|')
+        
+        if not file_exists:
+            writer.writerow(['eventType','created'])
+        
+        writer.writerows([[eventType,created]])

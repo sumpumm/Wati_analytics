@@ -1,5 +1,5 @@
 from fastapi import FastAPI,Request,HTTPException
-from utils import extract_operatorDetail,extract_senderDetails,extract_conversationDetails
+from utils import extract_operatorDetail,extract_senderDetails,extract_conversationDetails,extract_eventDetails
 
 app = FastAPI()
 
@@ -12,6 +12,7 @@ async def wati_webhook(request:Request):
         extract_senderDetails(payload)
         extract_operatorDetail(payload)
         extract_conversationDetails(payload)
+        extract_eventDetails(payload)
         
         return {"message":"Data received"}
     except Exception as e:
