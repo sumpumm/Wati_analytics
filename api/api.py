@@ -1,4 +1,5 @@
 from fastapi import FastAPI,Request,HTTPException
+from utils import extract_operatorDetail,extract_senderDetails
 
 app = FastAPI()
 
@@ -7,8 +8,11 @@ async def wati_webhook(request:Request):
     try:
         payload = await request.json()
         print(payload)
-    
-        return {"message":"You have successfully entered CRM"}
+        
+        extract_senderDetails(payload)
+        extract_operatorDetail(payload)
+        
+        return {"message":"Data received"}
     except Exception as e:
         raise HTTPException(status_code=400,detail=e)
 
