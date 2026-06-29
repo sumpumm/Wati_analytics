@@ -1,4 +1,4 @@
-from connection import db_connection
+from db.connection import db_connection
 
 def insert_student(studentName, studentContact):
     conn=db_connection()

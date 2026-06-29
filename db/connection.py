@@ -4,17 +4,18 @@ import os
 
 load_dotenv()
 
-hostname = os.getenv("hostname")
+hostname = os.getenv("host")
 database = os.getenv("database")
-username = os.getenv("username")
-pwd = os.getenv("pwd")
+username = os.getenv("user_name")
+password = os.getenv("password")
 port_id = os.getenv("port_id")
+
 
 def db_connection():
     return psycopg.connect(
                             host=hostname,
                             dbname=database,
                             user=username,
-                            password=pwd,
+                            password=password,
                             port=port_id
                            )

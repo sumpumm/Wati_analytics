@@ -1,4 +1,3 @@
-import psycopg
 from connection import db_connection
 
 def create_student():
@@ -28,7 +27,7 @@ def create_messageReceived():
     cursor.execute('''CREATE TABLE messageReceived (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     conversationId VARCHAR(100),
-    timestamp BIGINT,
+    timestamp DOUBLE PRECISION,
     assignedId VARCHAR(100),
     sourceId VARCHAR(100),
     sourceUrl TEXT
@@ -43,7 +42,7 @@ def create_messageSent():
     cursor.execute('''CREATE TABLE messageSent (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     conversationId VARCHAR(100),
-    timestamp BIGINT,
+    timestamp DOUBLE PRECISION,
     assigneeId VARCHAR(100)
     );''')
     conn.commit()
@@ -56,7 +55,7 @@ def create_eventDetails():
     cursor.execute('''CREATE TABLE eventDetails (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     eventType VARCHAR(100),
-    created BIGINT
+    created DOUBLE PRECISION
     );''')
     conn.commit()
     cursor.close()

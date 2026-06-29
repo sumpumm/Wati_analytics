@@ -30,6 +30,8 @@ def extract_senderDetails(payload:dict):
             writer.writerow(['senderName','senderContact'])
         
         writer.writerows([[sender_name,sender_contact]])
+    
+    return {"studentName":sender_name, "studentContact":sender_contact}
         
 def extract_operatorDetail(payload:dict):
     operatorName = payload.get("operatorName")
@@ -46,6 +48,7 @@ def extract_operatorDetail(payload:dict):
             writer.writerow(['operatorName','operatorEmail','assignedId'])
         
         writer.writerows([[operatorName,operatorEmail,assignedId]]) 
+    return {"operatorName":operatorName,"operatorEmail":operatorEmail,"assignedId":assignedId}
         
 def extract_messageReceieved(payload:dict):
     conversationId = payload.get("conversationId")
@@ -64,6 +67,7 @@ def extract_messageReceieved(payload:dict):
             writer.writerow(['conversationId','timestamp','assignedId','sourceId','sourceUrl'])
         
         writer.writerows([[conversationId,timestamp,assignedId,sourceId,sourceUrl]])
+    return {"conversationId":conversationId, "timestamp":timestamp, "assignedId":assignedId, "sourceId":sourceId, "sourceUrl":sourceUrl}
 
 def extract_messageSent(payload:dict):
     conversationId = payload.get("conversationId")
@@ -80,6 +84,7 @@ def extract_messageSent(payload:dict):
             writer.writerow(['conversationId','timestamp','assigneeId'])
         
         writer.writerows([[conversationId,timestamp,assigneeId]])
+    return {"conversationId":conversationId, "timestamp":timestamp, "assigneeId":assigneeId}
     
 def extract_eventDetails(payload:dict):
     eventType = payload.get("eventType")
@@ -95,7 +100,7 @@ def extract_eventDetails(payload:dict):
             writer.writerow(['eventType','timestamp'])
         
         writer.writerows([[eventType,timestamp]])
-        
+    return {"eventType":eventType,"timestamp":timestamp}
         
 file_path = 'data/messageReceived.txt'
 
