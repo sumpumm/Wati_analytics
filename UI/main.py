@@ -42,8 +42,8 @@ page = st.sidebar.radio(
 if page == "👨‍🎓 Student Details":
     studentDetails_UI()
 elif page == "💬 Conversation Details":
-    pass
+    conversationDetails_UI()
 elif page == "👨‍💼 Operator Details":
     operatorDetails_UI()
 elif page == "📌 Event Details":
-    pass
+    eventDetails_UI()

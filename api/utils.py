@@ -1,8 +1,21 @@
 from pathlib import Path
-import csv,os
+import csv,os,ast
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+def convert_dict(file_path):
+    payload=[]
+    with open(BASE_DIR/file_path,'r',encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            
+            if not line:
+                continue
+            
+            payload.append(ast.literal_eval(line))
+            
+    return payload
+        
 def extract_senderDetails(payload:dict):
     sender_name = payload.get("senderName")
     sender_contact = payload.get("waId")
@@ -34,27 +47,43 @@ def extract_operatorDetail(payload:dict):
         
         writer.writerows([[operatorName,operatorEmail,assignedId]]) 
         
-def extract_conversationDetails(payload:dict):
+def extract_messageReceieved(payload:dict):
     conversationId = payload.get("conversationId")
-    created = payload.get("created")
+    timestamp = payload.get("timestamp")
     assignedId = payload.get("assignedId")
     sourceId = payload.get("sourceId")
     sourceUrl = payload.get("sourceUrl")    
     
-    file_path = BASE_DIR/'data/conversationDetails.csv'
+    file_path = BASE_DIR/'data/messageReceieved.csv'
     file_exists = os.path.exists(file_path)  
     
     with open(file_path,'a',encoding="utf-8",newline="") as f:
         writer=csv.writer(f,delimiter='|')
         
         if not file_exists:
-            writer.writerow(['conversationId','created','assignedId','sourceId','sourceUrl'])
+            writer.writerow(['conversationId','timestamp','assignedId','sourceId','sourceUrl'])
         
-        writer.writerows([[conversationId,created,assignedId,sourceId,sourceUrl]])
-      
+        writer.writerows([[conversationId,timestamp,assignedId,sourceId,sourceUrl]])
+
+def extract_messageSent(payload:dict):
+    conversationId = payload.get("conversationId")
+    timestamp = payload.get("timestamp")
+    assigneeId = payload.get("assigneeId")
+    
+    file_path = BASE_DIR/'data/messageSent.csv'
+    file_exists = os.path.exists(file_path)
+    
+    with open(file_path,'a',encoding="utf-8",newline="") as f:
+        writer=csv.writer(f,delimiter='|')
+        
+        if not file_exists:
+            writer.writerow(['conversationId','timestamp','assigneeId'])
+        
+        writer.writerows([[conversationId,timestamp,assigneeId]])
+    
 def extract_eventDetails(payload:dict):
     eventType = payload.get("eventType")
-    created = payload.get("created")
+    timestamp = payload.get("timestamp")
     
     file_path = BASE_DIR/'data/eventDetails.csv'
     file_exists = os.path.exists(file_path)
@@ -63,6 +92,24 @@ def extract_eventDetails(payload:dict):
         writer=csv.writer(f,delimiter='|')
         
         if not file_exists:
-            writer.writerow(['eventType','created'])
+            writer.writerow(['eventType','timestamp'])
         
-        writer.writerows([[eventType,created]])
+        writer.writerows([[eventType,timestamp]])
+        
+        
+file_path = 'data/messageReceived.txt'
+
+payload = convert_dict(file_path)
+
+for x in payload:
+    extract_senderDetails(x)
+    extract_operatorDetail(x)
+    extract_messageReceieved(x)
+    extract_eventDetails(x)
+
+file_path = 'data/messageSent.txt'
+
+payload = convert_dict(file_path)
+    
+for x in payload:
+    extract_messageSent(x)
