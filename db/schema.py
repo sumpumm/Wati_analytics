@@ -3,7 +3,7 @@ from connection import db_connection
 def create_student():
     conn=db_connection()
     cursor=conn.cursor()
-    cursor.execute('CREATE TABLE student(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, senderName VARCHAR(255), senderContact VARCHAR(20));')
+    cursor.execute('CREATE TABLE student(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, studentName VARCHAR(255), studentContact VARCHAR(20));')
     conn.commit()
     cursor.close()
     conn.close()
@@ -11,7 +11,7 @@ def create_student():
 def create_operator():
     conn=db_connection()
     cursor=conn.cursor()
-    cursor.execute('''CREATE TABLE operatorDetails (
+    cursor.execute('''CREATE TABLE operator(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     operatorName VARCHAR(255),
     operatorEmail VARCHAR(255),
@@ -60,3 +60,7 @@ def create_eventDetails():
     conn.commit()
     cursor.close()
     conn.close()
+    
+    
+
+create_operator()

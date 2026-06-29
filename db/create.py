@@ -1,36 +1,59 @@
 from db.connection import db_connection
 
 def insert_student(studentName, studentContact):
-    conn=db_connection()
-    cursor=conn.cursor()
+    conn = db_connection()
+    cursor = conn.cursor()
+
     query = """
-    INSERT INTO student(
+    INSERT INTO student (
         studentName,
         studentContact
     )
-    VALUES (%s, %s)
+    SELECT %s, %s
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM student
+        WHERE studentContact = %s
+    )
     """
 
-    cursor.execute(query, (studentName, studentContact))
+    cursor.execute(query, (studentName, studentContact, studentContact))
     conn.commit()
+    cursor.close()
+    conn.close()
     
 def insert_operator(operatorName, operatorEmail, assignedId):
-    conn=db_connection()
-    cursor=conn.cursor()
+    conn = db_connection()
+    cursor = conn.cursor()
+
     query = """
     INSERT INTO operator (
         operatorName,
         operatorEmail,
         assignedId
     )
-    VALUES (%s, %s, %s)
+    SELECT %s, %s, %s
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM operator
+        WHERE assignedId = %s
+    )
     """
 
     cursor.execute(
         query,
-        (operatorName, operatorEmail, assignedId)
+        (
+            operatorName,
+            operatorEmail,
+            assignedId,
+            assignedId
+        )
     )
+
     conn.commit()
+    cursor.close()
+    conn.close()
+
     
 def insert_message_received(conversationId,timestamp,assignedId,sourceId,sourceUrl):
     conn=db_connection()
@@ -58,6 +81,8 @@ def insert_message_received(conversationId,timestamp,assignedId,sourceId,sourceU
     )
 
     conn.commit()
+    cursor.close()
+    conn.close()
     
 def insert_message_sent(conversationId,timestamp,assigneeId):
     conn=db_connection()
@@ -81,6 +106,8 @@ def insert_message_sent(conversationId,timestamp,assigneeId):
     )
 
     conn.commit()
+    cursor.close()
+    conn.close()
     
 def insert_event(eventType,created):
     conn=db_connection()
@@ -100,5 +127,6 @@ def insert_event(eventType,created):
             created
         )
     )
-
     conn.commit()
+    cursor.close()
+    conn.close()
